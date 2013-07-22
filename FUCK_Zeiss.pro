@@ -16,7 +16,8 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     paraset.cpp \
     datainterface.cpp \
-    data.cpp
+    data.cpp \
+    file_input.cpp
 
 HEADERS  += mainwindow.h \
     paraset.h \

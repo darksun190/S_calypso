@@ -1,79 +1,82 @@
 #ifndef DATA_H
 #define DATA_H
 /*
+ *  changed at July 2013, use QT date structer instead of the C++ standard.
+ *  this file work with data.cpp
+ *
  *  This is a template for collect data from Zeiss Calypso merge file.
  *  Author: Sun Xin
  *  Date:   2009/10/03
- *  copyleft by GPL, you can use it for free, enjoy.
+ *  copyleft by LGPL, you can use it for free, enjoy.
  *
  */
-#include<iostream>
-#include<fstream>
-#include<string>
-#include<vector>
-#include<queue>
-using namespace std;
+
+#include <QString>
+#include <QDataStream>
+#include <QVector>
+#include <QTextStream>
+#include <QFile>
 
 class one_piece
 {
     public:
-    string planid;
-    string partnb;
-    string id;
-    string type;
-    string idsymbol;
-    string actual;
-    string nominal;
-    string uppertol;
-    string lowertol;
-    string deviation;
-    string exceed;
-    string featureid;
-    string featuresigma;	//maybe double
-    string comment;
-    string link;
-    string linkmode;
-    string mmc;
-    string useruppertol;
-    string userlowertol;
-    string fftphi;
-    string fftphiunit;
-    string zoneroundnessangle;
-    string groupname;
-    string groupname2;
-    string datumAid;
-    string datumBid;
-    string datumCid;
-    string featurePosX;
-    string featurePosY;
-    string featurePosZ;
-    string group1;
-    string group2;
-    string group3;
-    string group4;
-    string group5;
-    string group6;
-    string group7;
-    string group8;
-    string group9;
-    string group10;
+    QString planid;
+    QString partnb;
+    QString id;
+    QString type;
+    QString idsymbol;
+    QString actual;
+    QString nominal;
+    QString uppertol;
+    QString lowertol;
+    QString deviation;
+    QString exceed;
+    QString featureid;
+    QString featuresigma;	//maybe double
+    QString comment;
+    QString link;
+    QString linkmode;
+    QString mmc;
+    QString useruppertol;
+    QString userlowertol;
+    QString fftphi;
+    QString fftphiunit;
+    QString zoneroundnessangle;
+    QString groupname;
+    QString groupname2;
+    QString datumAid;
+    QString datumBid;
+    QString datumCid;
+    QString featurePosX;
+    QString featurePosY;
+    QString featurePosZ;
+    QString group1;
+    QString group2;
+    QString group3;
+    QString group4;
+    QString group5;
+    QString group6;
+    QString group7;
+    QString group8;
+    QString group9;
+    QString group10;
 
     public:
     one_piece();
-    one_piece(string buf);
+    one_piece(QString buf);
     one_piece(const class one_piece &T);
-    friend ostream& operator<<( ostream&, const one_piece&);
+    friend QDataStream& operator<<( QDataStream&, const one_piece&);
     //you can modify this function to adjust the output
 };
-class Z_database
+class one_measure
 {
     public:
-    vector<one_piece> *dat;
+    QVector <one_piece> *dat;
 
     public:
-    Z_database();
+    one_measure();
+    one_measure(int n);
     void resize(int n);
 };
-typedef class Z_database one_measure;
 
 #endif // DATA_H

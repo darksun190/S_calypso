@@ -1,3 +1,9 @@
+//this file was the main function of the program
+//this program was using for save edit CMM data
+//then calculate the statics of these data.
+//the author is Sun Xin darksun190@gmail.com
+//this program was published in LGPL license.
+
 #include "mainwindow.h"
 #include <QApplication>
 #include <QTextCodec>

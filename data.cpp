@@ -1,254 +1,297 @@
-#include "header.h"
+#include "data.h"
 
-Z_C_merge::Z_C_merge()
+one_piece::one_piece()
 {
     ;
 };
-Z_C_merge::Z_C_merge(string buf)
+one_piece::one_piece(QString buf)
 {
-    signed int pos_i,pos_j;
-    signed int len=buf.size();
+    QTextStream in(&buf);
+    in>> planid
+     >> partnb
+    >> id
+    >> type
+    >> idsymbol
+    >> actual
+    >> nominal
+    >> uppertol
+    >> lowertol
+    >> deviation
+    >> exceed
+    >> featureid
+    >> featuresigma
+    >> comment
+    >> link
+    >> linkmode
+    >> mmc
+    >> useruppertol
+    >> userlowertol
+    >> fftphi
+    >> fftphiunit
+    >> zoneroundnessangle
+    >> groupname
+    >> groupname2
+    >> datumAid
+    >> datumBid
+    >> datumCid
+    >> featurePosX
+    >> featurePosY
+    >> featurePosZ
+    >> group1
+    >> group2
+    >> group3
+    >> group4
+    >> group5
+    >> group6
+    >> group7
+    >> group8
+    >> group9
+    >> group10;
+
+    /*
+    int pos_i,pos_j;
+    int len=buf.size();
     pos_i=0;
-    pos_j=buf.find('\t');
-    planid=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t');
+    planid=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    partnb=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    partnb=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    id=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    id=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    type=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    type=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    idsymbol=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    idsymbol=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    actual=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    actual=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    nominal=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    nominal=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    uppertol=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    uppertol=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    lowertol=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    lowertol=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    deviation=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    deviation=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    exceed=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    exceed=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    featureid=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    featureid=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    featuresigma=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    featuresigma=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    comment=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    comment=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    link=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    link=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    linkmode=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    linkmode=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    mmc=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    mmc=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    useruppertol=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    useruppertol=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    userlowertol=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    userlowertol=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    fftphi=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    fftphi=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    fftphiunit=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    fftphiunit=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    zoneroundnessangle=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    zoneroundnessangle=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    groupname=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    groupname=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    groupname2=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    groupname2=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    datumAid=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    datumAid=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    datumBid=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    datumBid=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    datumCid=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    datumCid=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    featurePosX=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    featurePosX=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    featurePosY=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    featurePosY=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    featurePosZ=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    featurePosZ=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    group1=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    group1=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    group2=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    group2=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    group3=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    group3=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    group4=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    group4=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    group5=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    group5=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    group6=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    group6=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    group7=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    group7=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    group8=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    group8=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    group9=buf.substr(pos_i,pos_j-pos_i);
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    group9=buf.mid(pos_i,pos_j-pos_i);
 
     pos_i=pos_j+1;
     if(pos_i>=len) return;
-    pos_j=buf.find('\t',pos_i);
-    if(pos_j==std::string::npos)pos_j=len;
-    group10=buf.substr(pos_i,pos_j-pos_i);
-
+    pos_j=buf.indexOf('\t',pos_i);
+    if(pos_j==-1)pos_j=len;
+    group10=buf.mid(pos_i,pos_j-pos_i);
+    */
     return;
 };
-Z_C_merge::Z_C_merge(const class Z_C_merge &T)
+one_piece::one_piece(const class one_piece &T)
 {
     this->planid=T.planid;
     this->partnb=T.partnb;
@@ -292,17 +335,22 @@ Z_C_merge::Z_C_merge(const class Z_C_merge &T)
     this->group10=T.group10;
 };
 
-ostream& operator<<(ostream& os, const Z_C_merge& a)
+QDataStream& operator<<(QDataStream& os, const one_piece& a)
 {
-    os<<a.planid<<'\t'<<a.partnb<<'\t'<<a.type<<'\t'<<a.actual<<'\t'<<a.nominal<<endl;
+    os<<a.planid<<'\t'<<a.partnb<<'\t'<<a.type<<'\t'<<a.actual<<'\t'<<a.nominal<<"\n";
     return os;
 };
 
-Z_database::Z_database()
+one_measure::one_measure()
 {
-    ;
+    dat = new QVector <one_piece>();
 };
-void Z_database::resize(int n)
+one_measure::one_measure(int n)
 {
-    dat.resize(n);
+    dat = new QVector <one_piece> (n);
+}
+
+void one_measure::resize(int n)
+{
+    dat->resize(n);
 }
