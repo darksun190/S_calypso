@@ -13,8 +13,19 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    paraset.cpp \
+    datainterface.cpp \
+    data.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    paraset.h \
+    datainterface.h \
+    data.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    paraset.ui \
+    datainterface.ui
+
+OTHER_FILES += \
+    log_file.txt
