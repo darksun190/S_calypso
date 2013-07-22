@@ -27,6 +27,6 @@ int main(int argc, char *argv[])
     w.setWindowFlags(Qt::WindowMinimizeButtonHint);
     w.setFixedSize(700,500);
     w.show();
-    
+
     return a.exec();
 }
