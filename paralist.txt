@@ -1,0 +1,2 @@
+1.  calypso_result_folder               calypso result files folder
+2.  database_path                       save the path of database CONSTANT

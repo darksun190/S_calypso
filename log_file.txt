@@ -3,3 +3,8 @@
     首个功能，窗口间切换，初始界面只拥有导航功能，分别创建窗口进行数据库管理，图表报告生成，程序设置等选项。
 2013-6-12
     文件列表
+2013-7-24
+    decide use sqlite for the database, no server, only one file
+    design the data structure for database
+    the database name was *.db3
+    int the main(), check the database contain the right table, if not, create a new one.

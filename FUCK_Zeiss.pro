@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -22,11 +22,13 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     paraset.h \
     datainterface.h \
-    data.h
+    data.h \
+    connect.h
 
 FORMS    += mainwindow.ui \
     paraset.ui \
     datainterface.ui
 
 OTHER_FILES += \
-    log_file.txt
+    log_file.txt \
+    paralist.txt
