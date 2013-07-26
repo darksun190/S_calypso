@@ -6,12 +6,17 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QDebug>
+#include <QSqlResult>
 
+void init_db();         //init the main_list for the database
+//create 3 tables for a new program, return false if exits or errors
+bool db_create_inspection(QString inspection_name);
 
 static bool createConnection()
 {
+    QString database_name = ".\\data.db3";
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName(".\\data.db3");
+    db.setDatabaseName(database_name);
     if (!db.open())
     {
         QMessageBox::critical(0, qApp->tr("Cannot open database"),

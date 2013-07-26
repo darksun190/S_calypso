@@ -8,3 +8,7 @@
     design the data structure for database
     the database name was *.db3
     int the main(), check the database contain the right table, if not, create a new one.
+    I changed my idea, there's a "main_list" table for record all the name of the programs
+        each program have 3 tables named "XXXX_chr" for record all the characteristic
+                                         "XXXX_dat" for record all the actuals by several times
+                                         "XXXX_head" for record all the header varibles by each measurements.

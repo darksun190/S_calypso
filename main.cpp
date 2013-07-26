@@ -14,6 +14,11 @@
 #include <QSqlRecord>
 //for Global setting
 
+//functions
+#ifndef DEBUG
+#define DEBUG
+#endif
+
 
 
 
@@ -31,20 +36,31 @@ int main(int argc, char *argv[])
     //QTextCodec::setCodecForTr(codec);
     QSettings setting;
     setting.setValue("path","C:\\sunxin");
-    QSqlQuery query;
-    qDebug()<<query.exec("SELECT name FROM sqlite_master WHERE type='table' ");
-    QSqlRecord rec;
-    rec = query.record();
-    qDebug()<<rec.count();
-    while(    query.next())
-    {
-        qDebug()<<query.value(rec.indexOf("name")).toString();
-    }
 
+
+    //check if the main tables is exits
+    {
+        QSqlQuery query;
+       if (!query.exec("SELECT name FROM sqlite_master WHERE name='main_list' "))
+        {
+            QMessageBox::critical(0,qApp->tr("Check the permissiong"),
+                                  qApp->tr("Can NOT execute the SQL commmand.\n"
+                                     "Please check the file or permission."),QMessageBox::Cancel);
+        }
+        if(!query.size()>0)           //which means no result from the select, no results table
+        {
+        }
+
+    }
+#ifndef DEBUG
     MainWindow w;
     w.setWindowFlags(Qt::WindowMinimizeButtonHint);             //forbid the windows resize
     w.setFixedSize(700,500);
     w.show();
 
     return a.exec();
+#endif
+#ifdef DEBUG
+    return 0;
+#endif
 }
