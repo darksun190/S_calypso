@@ -7,10 +7,16 @@
 #include <QSqlQuery>
 #include <QDebug>
 #include <QSqlResult>
+#include "data.h"
 
 void init_db();         //init the main_list for the database
 //create 3 tables for a new program, return false if exits or errors
 bool db_create_inspection(QString inspection_name);
+bool insert_one_file(const QString fileName);
+bool insert_one_measure(const QVector <one_piece> &one_measure);
+
+
+
 
 static bool createConnection()
 {

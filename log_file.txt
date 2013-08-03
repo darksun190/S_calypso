@@ -12,3 +12,6 @@
         each program have 3 tables named "XXXX_chr" for record all the characteristic
                                          "XXXX_dat" for record all the actuals by several times
                                          "XXXX_head" for record all the header varibles by each measurements.
+2013-7-28
+    have finished the database function init_db() and function for create a new inspection.
+    do NOT use the data structure, use the database for save and execute the data.

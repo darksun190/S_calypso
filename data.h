@@ -11,6 +11,11 @@
  *
  */
 
+//2013-7-28
+//ignore this function
+//use database to save all the date
+//only use these class for input the data.
+
 #include <QString>
 #include <QDataStream>
 #include <QVector>
@@ -68,15 +73,6 @@ class one_piece
     friend QDataStream& operator<<( QDataStream&, const one_piece&);
     //you can modify this function to adjust the output
 };
-class one_measure
-{
-    public:
-    QVector <one_piece> *dat;
 
-    public:
-    one_measure();
-    one_measure(int n);
-    void resize(int n);
-};
 
 #endif // DATA_H

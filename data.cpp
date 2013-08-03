@@ -1,4 +1,8 @@
 #include "data.h"
+//2013-7-28
+//ignore this function
+//use database to save all the date
+//only use these class for input the data.
 
 one_piece::one_piece()
 {
@@ -7,6 +11,7 @@ one_piece::one_piece()
 one_piece::one_piece(QString buf)
 {
     QTextStream in(&buf);
+    in.setPadChar('\t');
     in>> planid
      >> partnb
     >> id
@@ -101,16 +106,4 @@ QDataStream& operator<<(QDataStream& os, const one_piece& a)
     return os;
 };
 
-one_measure::one_measure()
-{
-    dat = new QVector <one_piece>();
-};
-one_measure::one_measure(int n)
-{
-    dat = new QVector <one_piece> (n);
-}
 
-void one_measure::resize(int n)
-{
-    dat->resize(n);
-}

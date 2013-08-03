@@ -4,7 +4,7 @@
 //give a filename for input, QVector is the container these data
 //use this with data.h & data.cpp
 //need another function write to database
-
+/*
 void data_input(QString fileName,QVector <one_measure> &all_data)
 {
     QString buf_line;
@@ -47,3 +47,4 @@ void data_input(QString fileName,QVector <one_measure> &all_data)
     all_data.push_back(buf_G);
 
 }
+*/

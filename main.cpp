@@ -16,7 +16,7 @@
 
 //functions
 #ifndef DEBUG
-#define DEBUG
+//#define DEBUG
 #endif
 
 
